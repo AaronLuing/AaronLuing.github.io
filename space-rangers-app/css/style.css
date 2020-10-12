@@ -2,3 +2,40 @@ h1 {
     display: flex;
     justify-content: center;
 }
+/* #help {
+	background-color: rgba(0,0,0,0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	overflow: auto;
+}
+
+#helpbox {
+	background-color: white;
+	height: 350px;
+	width: 550px;
+	border-radius: 2px;
+	margin: 150px auto;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+} */
+.row>div {
+    margin: 3px;
+    border: solid 3px black;
+    display: inline-block;
+    font-size: 35px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    padding: 0px;
+    vertical-align: top;
+    line-height: 100px;
+    background-color: orange;
+}
+body {
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
