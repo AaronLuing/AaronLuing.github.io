@@ -93,9 +93,13 @@ const alien = new AlienFactory("Space Pirate")
 //     }
 // }
 
-
+const EventHandlers = {
+    makeEnemies: (ammount) => {
+        alien.generateAliens(ammount)
+    }
+}
 $(() => {
-    $('.easy').on('click', alien.generateAliens(3),); {
-    $('.medium').on('click', alien.generateAliens(6))
-    $('.hard').on('click', alien.generateAliens(10))
+    $('.easy').on('click', EventHandlers.makeEnemies(3));
+    $('.medium').on('click', EventHandlers.makeEnemies(6));
+    $('.hard').on('click', EventHandlers.makeEnemies(10));
 })
