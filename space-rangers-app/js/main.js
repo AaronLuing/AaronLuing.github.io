@@ -1,7 +1,7 @@
 $(() => {
-    // $('.easy').on('click', EventHandlers.makeEnemies(3));
-    // $('.medium').on('click', EventHandlers.makeEnemies(6));
-    // $('.hard').on('click', EventHandlers.makeEnemies(10));
+    $('.game-canvas').css({'display':'none'})
+    $('.player-ship').text(player.name)
+    
 })
 
 class Ship {
@@ -49,7 +49,7 @@ const randomFloat = (min, max) => {
     let num = Math.random() * (max - min) + min;    
     return num.toFixed(1);}
 
-const player = new Ship("USS Enterprise", 20, 5, .7)
+const player = new Ship("USS Reliant", 20, 5, .7)
 const alien = new AlienFactory("Space Pirate")
 // alien.generateAliens(6)
 // console.log(player)
@@ -104,5 +104,6 @@ const EventHandlers = {
         let $difficulty = $('.difficulty')
         alien.generateAliens(ammount);
         $difficulty.css({'display':'none'})
+        $('.game-canvas').css({'display':'inline-block'})
     }
 }
