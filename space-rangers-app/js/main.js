@@ -1,3 +1,9 @@
+$(() => {
+    // $('.easy').on('click', EventHandlers.makeEnemies(3));
+    // $('.medium').on('click', EventHandlers.makeEnemies(6));
+    // $('.hard').on('click', EventHandlers.makeEnemies(10));
+})
+
 class Ship {
     constructor(name, hull, firepower, accuracy) {
         this.name = name
@@ -95,11 +101,8 @@ const alien = new AlienFactory("Space Pirate")
 
 const EventHandlers = {
     makeEnemies: (ammount) => {
-        alien.generateAliens(ammount)
+        let $difficulty = $('.difficulty')
+        alien.generateAliens(ammount);
+        $difficulty.css({'display':'none'})
     }
 }
-$(() => {
-    $('.easy').on('click', EventHandlers.makeEnemies(3));
-    $('.medium').on('click', EventHandlers.makeEnemies(6));
-    $('.hard').on('click', EventHandlers.makeEnemies(10));
-})
