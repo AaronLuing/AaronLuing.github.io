@@ -1,11 +1,12 @@
 $(() => {
     $('.game-canvas').css({'display':'none'})
     $('.shipname').css({'display':'none'})
-    $('.player-ship').text(player.name)
+    // $('.player-ship').text(player.name)
     
     $('form').on('submit', () => {
         const playerName = $('.namebox').val();
         player.name = playerName;
+        $('.player-ship').text(player.name)
         $('.shipname').css({'display':'none'});
         $('.game-canvas').css({'display':'inline-block'})
     })
