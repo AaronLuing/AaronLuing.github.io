@@ -7,6 +7,8 @@ $(() => {
         player.name = playerName;
         $('#player-ship').text(player.name);
         $('#hull').text('Hull : ' + player.hull);
+        $('#firepower').text('Firepower : ' + player.firepower);
+        $('#accuracy').text('Accuracy : ' + player.accuracy);
         $('.shipname').css({'display':'none'});
         $('.game-canvas').css({'display':'inline-block'})
     })
