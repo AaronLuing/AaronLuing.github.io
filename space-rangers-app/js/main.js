@@ -1,12 +1,12 @@
 $(() => {
     $('.game-canvas').css({'display':'none'})
     $('.shipname').css({'display':'none'})
-    // $('.player-ship').text(player.name)
     
     $('form').on('submit', () => {
         const playerName = $('.namebox').val();
         player.name = playerName;
-        $('.player-ship').text(player.name)
+        $('#player-ship').text(player.name);
+        $('#hull').text('Hull : ' + player.hull);
         $('.shipname').css({'display':'none'});
         $('.game-canvas').css({'display':'inline-block'})
     })
@@ -53,19 +53,14 @@ class AlienFactory {
 
 const randomNumber = (min, max) => {    
     return Math.floor(Math.random() * (max - min + 1)) + min;}
+
 const randomFloat = (min, max) => {    
     let num = Math.random() * (max - min) + min;    
     return num.toFixed(1);}
 
-    const player = new Ship("playerName", 20, 5, .7)
-    const alien = new AlienFactory("Space Pirate")
+const player = new Ship("playerName", 20, 5, .7)
+const alien = new AlienFactory("Space Pirate")
 
-
-// const player = new Ship("playerName", 20, 5, .7)
-// const alien = new AlienFactory("Space Pirate")
-// alien.generateAliens(6)
-// console.log(player)
-// console.log(alien.aliens)
 
 // const shipBattle=()=>{
 //     player.battle(alien.aliens[0])
@@ -110,6 +105,7 @@ const randomFloat = (min, max) => {
 //         alert("You can only boost shield if your hull is less than 10")
 //     }
 // }
+
 
 const EventHandlers = {
     makeEnemies: (ammount) => {
