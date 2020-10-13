@@ -2,7 +2,7 @@ $(() => {
     $('.game-canvas').css({'display':'none'})
     $('.shipname').css({'display':'none'})
     
-    $('form').on('submit', () => {
+    $('form').on('submit', (event) => {
         const playerName = $('.namebox').val();
         player.name = playerName;
         $('#player-ship').text(player.name);
@@ -11,6 +11,7 @@ $(() => {
         $('#accuracy').text('Accuracy : ' + player.accuracy);
         $('.shipname').css({'display':'none'});
         $('.game-canvas').css({'display':'inline-block'})
+        event.preventDefault();
     })
 })
 
@@ -48,7 +49,9 @@ class AlienFactory {
     generateAliens(ammount) {
     for (let i = 0; i < ammount; i++) {       
     const newAlien = new Ship(this.name + ' ' + (this.aliens.length+1),randomNumber(3, 6), randomNumber(2, 4), randomFloat(.6, .8))        
-    this.aliens.push(newAlien) }       
+    this.aliens.push(newAlien)
+    $('<li>').addClass('pirate').text(alien.hull).appendTo('.enemyFleet')
+    }       
     return this.name
     }
 }
