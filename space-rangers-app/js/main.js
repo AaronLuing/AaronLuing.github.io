@@ -1,5 +1,6 @@
 $(() => {
     $('.game-canvas').css({'display':'none'})
+    $('.shipname').css({'display':'none'})
     $('.player-ship').text(player.name)
     
 })
@@ -104,6 +105,6 @@ const EventHandlers = {
         let $difficulty = $('.difficulty')
         alien.generateAliens(ammount);
         $difficulty.css({'display':'none'})
-        $('.game-canvas').css({'display':'inline-block'})
+        $('.shipname').css({'display':'inline-block'})
     }
 }
