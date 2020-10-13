@@ -10,19 +10,19 @@
     <body>
         <h1><b>Space Rangers</b></h1>
         <div class="difficulty">
-            <div class="row">
+            <div class="diff1">
                 <h2>Select Your Assignment</h2>
             </div>
-            <div class="row">
-                <button class="easy" onclick="EventHandlers.makeEnemies(3)">Defend Outer Worlds (3 enemies)</button>
-                <button class="medium" onclick="EventHandlers.makeEnemies(6)">Defend Inner Worlds (6 enemies)</button>
-                <button class="hard" onclick="EventHandlers.makeEnemies(10)">Defend Homeworld (10 enemies)</button>
+            <div class="diff2">
+                <button class="easy" id="but1" onclick="EventHandlers.makeEnemies(3)">Defend Outer Worlds (3 enemies)</button>
+                <button class="medium" id="but1" onclick="EventHandlers.makeEnemies(6)">Defend Inner Worlds (6 enemies)</button>
+                <button class="hard" id="but1" onclick="EventHandlers.makeEnemies(10)">Defend Homeworld (10 enemies)</button>
             </div>
         </div>
         <div class="shipname">
             <form>
                 <input type="text" placeholder="Enter your ship name" class="namebox"/>
-                <button type="submit">REGISTER SHIP</button>
+                <button type="submit" id="register">REGISTER SHIP</button>
             </form>
         </div>
         <div class="game-canvas">

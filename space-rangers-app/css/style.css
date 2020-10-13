@@ -2,6 +2,9 @@ h1, h2 {
     display: flex;
     justify-content: center;
 }
+h1 {
+    font-size: 50px;
+}
 body {
     margin: 0 auto;
     text-align: center;
@@ -12,11 +15,34 @@ body {
 }
 #row1 {
     justify-content: left;
-    padding-right: 100px;
+    padding-right: 200px;
 }
 #row2 {
     justify-content: right;
-    padding-left: 100px;
+    padding-left: 200px;
+}
+/* stylings for submission form and buttons modified and styled after
+https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end_development/w03d02/student_labs/todo_app */
+#register {
+    height: 30px; 
+    width: 100px;
+    border: 10px black;
+    border-radius: 50px;
+	background-color: navy;
+	color: white;
+}
+.namebox {
+    height: 23px; 
+    width: 200px;
+}
+#but1 {
+    height: 40px; 
+    width: 250px;
+    font-size: 15px;
+    border: 10px black;
+    border-radius: 50px;
+	background-color: navy;
+	color: white;
 }
 /* #help {
 	background-color: rgba(0,0,0,0.4);
