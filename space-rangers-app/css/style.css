@@ -2,6 +2,22 @@ h1, h2 {
     display: flex;
     justify-content: center;
 }
+body {
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.row {
+    display: inline-flex;
+}
+#row1 {
+    justify-content: left;
+    padding-right: 100px;
+}
+#row2 {
+    justify-content: right;
+    padding-left: 100px;
+}
 /* #help {
 	background-color: rgba(0,0,0,0.4);
 	position: fixed;
@@ -34,8 +50,3 @@ h1, h2 {
     line-height: 100px;
     background-color: orange;
 } */
-body {
-    margin: 0 auto;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-}
