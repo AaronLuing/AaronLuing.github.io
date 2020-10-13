@@ -3,6 +3,12 @@ $(() => {
     $('.shipname').css({'display':'none'})
     $('.player-ship').text(player.name)
     
+    $('form').on('submit', () => {
+        const playerName = $('.namebox').val();
+        player.name = playerName;
+        $('.shipname').css({'display':'none'});
+        $('.game-canvas').css({'display':'inline-block'})
+    })
 })
 
 class Ship {
@@ -50,8 +56,12 @@ const randomFloat = (min, max) => {
     let num = Math.random() * (max - min) + min;    
     return num.toFixed(1);}
 
-const player = new Ship("USS Reliant", 20, 5, .7)
-const alien = new AlienFactory("Space Pirate")
+    const player = new Ship("playerName", 20, 5, .7)
+    const alien = new AlienFactory("Space Pirate")
+
+
+// const player = new Ship("playerName", 20, 5, .7)
+// const alien = new AlienFactory("Space Pirate")
 // alien.generateAliens(6)
 // console.log(player)
 // console.log(alien.aliens)
