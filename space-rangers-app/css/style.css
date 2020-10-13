@@ -44,7 +44,9 @@ https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end
 	background-color: navy;
 	color: white;
 }
-.pirate {
+/* flexwrap used provided by 
+https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow */
+.enemyFleet>div {
     display: flex;
     flex-direction: column;
     margin: 3px;
@@ -58,9 +60,13 @@ https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end
     background-color: orange;
 }
 .enemyFleet {
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
     width: 300px;
     height: 400px;
 }
+
 /* #help {
 	background-color: rgba(0,0,0,0.4);
 	position: fixed;

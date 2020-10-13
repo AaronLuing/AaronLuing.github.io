@@ -50,7 +50,7 @@ class AlienFactory {
     for (let i = 0; i < ammount; i++) {       
     const newAlien = new Ship(this.name + ' ' + (this.aliens.length+1),randomNumber(3, 6), randomNumber(2, 4), randomFloat(.6, .8))        
     this.aliens.push(newAlien)
-    $('<li>').addClass('pirate').text(alien.hull).appendTo('.enemyFleet')
+    $('<div>').addClass('pirate').text(alien.hull).appendTo('.enemyFleet')
     }       
     return this.name
     }
