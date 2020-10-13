@@ -51,7 +51,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow */
     flex-direction: column;
     margin: 3px;
     border: solid 3px black;
-    font-size: 35px;
+    font-size: 15px;
     width: 100px;
     height: 100px;
     text-align: center;
