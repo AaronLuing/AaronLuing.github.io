@@ -28,6 +28,7 @@ class Ship {
         console.log(this.name + ' attacks ' + enemy.name)
         if (this.accuracy > Math.random()) {
             enemy.hull -= this.firepower
+            $('#hull').text('Hull : ' + player.hull);
         } else {
             alert('Missed!  Shot didn\'t connect!')
             console.log('Missed!  Shot didn\'t connect!')
@@ -76,6 +77,25 @@ const EventHandlers = {
     }
 }
 
+const shipBattle=()=>{
+    player.battle(alien.aliens[0])
+    if (alien.aliens[0].hull < 0) {
+        alien.aliens.splice(0, 1)
+    } else {
+    alien.aliens[0].battle(player)
+    }
+    didIWin()
+}
+const didIWin = () => {
+    if (Array.isArray(alien.aliens) && alien.aliens.length === 0) {
+        alert("You Win!  The Borg are defeated!")
+    }else if (player.hull === 0) {
+        alert("You Lose!  The Borg will assimilate Earth!")
+    } 
+    else {
+        return
+    }
+}
 // function shipBattle() {
 //     let $target = $(event.target)
 //     player.battle($target)
@@ -86,15 +106,6 @@ const EventHandlers = {
 //             }
 //             didIWin()
 // }
-const shipBattle=()=>{
-    player.battle(alien.aliens[0])
-    if (alien.aliens[0].hull < 0) {
-        alien.aliens.splice(0, 1)
-    } else {
-    alien.aliens[0].battle(player)
-    }
-    didIWin()
-}
 
 // const runAway=()=>{
 //     let coward = prompt("Are you sure?","yes or no")
@@ -106,17 +117,6 @@ const shipBattle=()=>{
 //             alert("You decided to stand your ground like a true Starfleet Officer!")
 //         }
 // }
-
-const didIWin = () => {
-    if (Array.isArray(alien.aliens) && alien.aliens.length === 0) {
-        alert("You Win!  The Borg are defeated!")
-    }else if (player.hull === 0) {
-        alert("You Lose!  The Borg will assimilate Earth!")
-    } 
-    else {
-        return
-    }
-}
 
 // const boostShield = () => {
 //     if (player.hull <= 10) {
