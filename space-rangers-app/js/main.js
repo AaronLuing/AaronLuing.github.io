@@ -18,7 +18,21 @@ $(() => {
             shipBattle(1)})
         $('#ship3').on('click', e => {
             shipBattle(2)})
-    })
+        $('#ship4').on('click', e => {
+            shipBattle(3)})
+        $('#ship5').on('click', e => {
+            shipBattle(4)})
+        $('#ship6').on('click', e => {
+            shipBattle(5)})
+        $('#ship7').on('click', e => {
+            shipBattle(6)})
+        $('#ship8').on('click', e => {
+            shipBattle(7)})
+        $('#ship9').on('click', e => {
+            shipBattle(8)})
+        $('#ship10').on('click', e => {
+            shipBattle(9)})
+        })
 })
 
 class Ship {
