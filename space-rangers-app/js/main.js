@@ -3,6 +3,7 @@ $(() => {
     $('.shipname').css({'display':'none'})
     
     $('form').on('submit', (event) => {
+        event.preventDefault();
         const playerName = $('.namebox').val();
         player.name = playerName;
         $('#player-ship').text(player.name);
@@ -11,10 +12,12 @@ $(() => {
         $('#accuracy').text('Accuracy : ' + player.accuracy);
         $('.shipname').css({'display':'none'});
         $('.game-canvas').css({'display':'inline-block'})
-        event.preventDefault();
-        $('#ship1').on('click', shipBattle(0))
-        $('#ship2').on('click', shipBattle(1))
-        $('#ship3').on('click', shipBattle(2))
+        $('#ship1').on('click', e => {
+            shipBattle(0)})
+        $('#ship2').on('click', e => {
+            shipBattle(1)})
+        $('#ship3').on('click', e => {
+            shipBattle(2)})
     })
 })
 
@@ -54,7 +57,7 @@ class AlienFactory {
     for (let i = 0; i < ammount; i++) {       
     const newAlien = new Ship(this.name + ' ' + (this.aliens.length+1),randomNumber(3, 6), randomNumber(2, 4), randomFloat(.6, .8))        
     this.aliens.push(newAlien)
-    $('<div>').addClass('pirate').attr('id','ship'+this.aliens.length) .text('Hull: ' + newAlien.hull).appendTo('.enemyFleet')
+    $('<div>').addClass('pirate').attr('id','ship'+this.aliens.length).attr('value', this.aliens.length-1).text('Hull: ' + newAlien.hull).appendTo('.enemyFleet')
     }       
     return this.name
     }
@@ -68,28 +71,31 @@ const randomFloat = (min, max) => {
     return num.toFixed(1);}
 
 const player = new Ship("playerName", 20, 5, .7)
-const alien = new AlienFactory("Space Pirate")
+const aliens = new AlienFactory("Space Pirate")
 
 const EventHandlers = {
     makeEnemies: (ammount) => {
         let $difficulty = $('.difficulty')
-        alien.generateAliens(ammount);
+        aliens.generateAliens(ammount);
         $difficulty.css({'display':'none'})
         $('.shipname').css({'display':'inline-block'})
     }
 }
 
 const shipBattle=(num)=>{
-    player.battle(alien.aliens[num])
-    if (alien.aliens[num].hull < 0) {
-        alien.aliens.splice(num, 1)
+    console.log(num)
+    player.battle(aliens.aliens[num])
+    if (aliens.aliens[num].hull < 0) {
+        aliens.aliens.splice(num, 1)
     } else {
-    alien.aliens[num].battle(player)
+    aliens.aliens[num].battle(player)
     }
     didIWin()
 }
+
+
 const didIWin = () => {
-    if (Array.isArray(alien.aliens) && alien.aliens.length === 0) {
+    if (Array.isArray(aliens.aliens) && aliens.aliens.length === 0) {
         alert("You Win!  The Borg are defeated!")
     }else if (player.hull === 0) {
         alert("You Lose!  The Borg will assimilate Earth!")
