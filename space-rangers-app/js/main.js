@@ -12,6 +12,7 @@ $(() => {
         $('.shipname').css({'display':'none'});
         $('.game-canvas').css({'display':'inline-block'})
         event.preventDefault();
+        $('.pirate').on('click', shipBattle);
     })
 })
 
@@ -66,7 +67,37 @@ const randomFloat = (min, max) => {
 const player = new Ship("playerName", 20, 5, .7)
 const alien = new AlienFactory("Space Pirate")
 
+// $('.pirate').on('click', shipBattle);
 
+const EventHandlers = {
+    makeEnemies: (ammount) => {
+        let $difficulty = $('.difficulty')
+        alien.generateAliens(ammount);
+        $difficulty.css({'display':'none'})
+        $('.shipname').css({'display':'inline-block'})
+    }
+    // shipBattle: (event) => {
+    //     let $target = $(event.target)
+    //     player.battle($target)
+    //     if ($target.hull < 0) {
+    //             $target.splice()
+    //             } else {
+    //             $target.battle(player)
+    //             }
+    //             didIWin()
+    // }
+}
+
+function shipBattle() {
+    let $target = $(event.target)
+    player.battle($target)
+    if ($target.hull < 0) {
+            $target.splice()
+            } else {
+            $target.battle(player)
+            }
+            didIWin()
+}
 // const shipBattle=()=>{
 //     player.battle(alien.aliens[0])
 //     if (alien.aliens[0].hull < 0) {
@@ -112,11 +143,3 @@ const alien = new AlienFactory("Space Pirate")
 // }
 
 
-const EventHandlers = {
-    makeEnemies: (ammount) => {
-        let $difficulty = $('.difficulty')
-        alien.generateAliens(ammount);
-        $difficulty.css({'display':'none'})
-        $('.shipname').css({'display':'inline-block'})
-    }
-}
