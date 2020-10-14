@@ -51,7 +51,7 @@ class AlienFactory {
     for (let i = 0; i < ammount; i++) {       
     const newAlien = new Ship(this.name + ' ' + (this.aliens.length+1),randomNumber(3, 6), randomNumber(2, 4), randomFloat(.6, .8))        
     this.aliens.push(newAlien)
-    $('<div>').addClass('pirate').text('Hull: ' + newAlien.hull).appendTo('.enemyFleet')
+    $('<div>').addClass('pirate').attr('id','ship'+this.aliens.length) .text('Hull: ' + newAlien.hull).appendTo('.enemyFleet')
     }       
     return this.name
     }
@@ -67,8 +67,6 @@ const randomFloat = (min, max) => {
 const player = new Ship("playerName", 20, 5, .7)
 const alien = new AlienFactory("Space Pirate")
 
-// $('.pirate').on('click', shipBattle);
-
 const EventHandlers = {
     makeEnemies: (ammount) => {
         let $difficulty = $('.difficulty')
@@ -76,37 +74,27 @@ const EventHandlers = {
         $difficulty.css({'display':'none'})
         $('.shipname').css({'display':'inline-block'})
     }
-    // shipBattle: (event) => {
-    //     let $target = $(event.target)
-    //     player.battle($target)
-    //     if ($target.hull < 0) {
-    //             $target.splice()
-    //             } else {
-    //             $target.battle(player)
-    //             }
-    //             didIWin()
-    // }
 }
 
-function shipBattle() {
-    let $target = $(event.target)
-    player.battle($target)
-    if ($target.hull < 0) {
-            $target.splice()
-            } else {
-            $target.battle(player)
-            }
-            didIWin()
-}
-// const shipBattle=()=>{
-//     player.battle(alien.aliens[0])
-//     if (alien.aliens[0].hull < 0) {
-//         alien.aliens.splice(0, 1)
-//     } else {
-//     alien.aliens[0].battle(player)
-//     }
-//     didIWin()
+// function shipBattle() {
+//     let $target = $(event.target)
+//     player.battle($target)
+//     if ($target.hull < 0) {
+//             $target.splice()
+//             } else {
+//             $target.battle(player)
+//             }
+//             didIWin()
 // }
+const shipBattle=()=>{
+    player.battle(alien.aliens[0])
+    if (alien.aliens[0].hull < 0) {
+        alien.aliens.splice(0, 1)
+    } else {
+    alien.aliens[0].battle(player)
+    }
+    didIWin()
+}
 
 // const runAway=()=>{
 //     let coward = prompt("Are you sure?","yes or no")
@@ -119,16 +107,16 @@ function shipBattle() {
 //         }
 // }
 
-// const didIWin = () => {
-//     if (Array.isArray(alien.aliens) && alien.aliens.length === 0) {
-//         alert("You Win!  The Borg are defeated!")
-//     }else if (player.hull === 0) {
-//         alert("You Lose!  The Borg will assimilate Earth!")
-//     } 
-//     else {
-//         return
-//     }
-// }
+const didIWin = () => {
+    if (Array.isArray(alien.aliens) && alien.aliens.length === 0) {
+        alert("You Win!  The Borg are defeated!")
+    }else if (player.hull === 0) {
+        alert("You Lose!  The Borg will assimilate Earth!")
+    } 
+    else {
+        return
+    }
+}
 
 // const boostShield = () => {
 //     if (player.hull <= 10) {
