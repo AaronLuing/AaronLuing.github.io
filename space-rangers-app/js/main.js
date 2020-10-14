@@ -12,9 +12,9 @@ $(() => {
         $('.shipname').css({'display':'none'});
         $('.game-canvas').css({'display':'inline-block'})
         event.preventDefault();
-        $('#ship1').on('click', Battle.fightOne)
-        $('#ship2').on('click', Battle.fightTwo)
-        $('#ship3').on('click', Battle.fightThree)
+        $('#ship1').on('click', shipBattle(0))
+        $('#ship2').on('click', shipBattle(1))
+        $('#ship3').on('click', shipBattle(2))
     })
 })
 
@@ -79,72 +79,15 @@ const EventHandlers = {
     }
 }
 
-
-const Battle = {
-    fightOne: () => {
-        player.battle(alien.aliens[0])
-        if (alien.aliens[0].hull < 0) {
-            alien.aliens.splice(0, 1)
-        } else {
-        alien.aliens[0].battle(player)
-        }
-        didIWin()
-    },
-    fightTwo: () => {
-        player.battle(alien.aliens[1])
-        if (alien.aliens[1].hull < 0) {
-            alien.aliens.splice(1, 2)
-        } else {
-        alien.aliens[1].battle(player)
-        }
-        didIWin()
-    },
-    fightThree: () => {
-        player.battle(alien.aliens[2])
-        if (alien.aliens[2].hull < 0) {
-            alien.aliens.splice(2)
-        } else {
-        alien.aliens[2].battle(player)
-        }
-        didIWin()
-    },
+const shipBattle=(num)=>{
+    player.battle(alien.aliens[num])
+    if (alien.aliens[num].hull < 0) {
+        alien.aliens.splice(num, 1)
+    } else {
+    alien.aliens[num].battle(player)
+    }
+    didIWin()
 }
-
-// const attackSequence=()=>{
-//     $('.ship1').on('click', player.battle(alien.aliens[0]))
-//     if (alien.aliens[0].hull < 0) {
-//         alien.aliens.splice(0,1)
-//     } else {
-//     alien.aliens[0].battle(player)
-//     }
-//     didIWin()
-//     $('.ship2').on('click', player.battle(alien.aliens[1]))
-//     if (alien.aliens[1].hull < 0) {
-//         alien.aliens.splice(1,2)
-//     } else {
-//     alien.aliens[1].battle(player)
-//     }
-//     didIWin()
-//     $('.ship3').on('click', player.battle(alien.aliens[2]))
-//     if (alien.aliens[2].hull < 0) {
-//         alien.aliens.splice(2)
-//     } else {
-//     alien.aliens[2].battle(player)
-//     }
-//     didIWin()
-// }
-
-
-
-// const shipBattle=()=>{
-//     player.battle(alien.aliens[0])
-//     if (alien.aliens[0].hull < 0) {
-//         alien.aliens.splice(0, 1)
-//     } else {
-//     alien.aliens[0].battle(player)
-//     }
-//     didIWin()
-// }
 const didIWin = () => {
     if (Array.isArray(alien.aliens) && alien.aliens.length === 0) {
         alert("You Win!  The Borg are defeated!")
