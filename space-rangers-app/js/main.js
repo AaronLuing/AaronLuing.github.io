@@ -88,6 +88,8 @@ const player = new Ship("playerName", 20, 5, .7)
 const aliens = new AlienFactory("Space Pirate")
 let winner = 0
 let winCon
+const blast = new Audio('audio/explosion-2.wav')
+const victory = new Audio('audio/woohoo.mp3')
 
 const EventHandlers = {
     makeEnemies: (ammount) => {
@@ -102,8 +104,8 @@ const EventHandlers = {
 const shipBattle=(num)=>{
     player.battle(aliens.aliens[num])
     if (aliens.aliens[num].hull < 0) {
+        blast.play();
         winner++;
-        // aliens.aliens.splice(num, 1);
         (event.target).remove()
     } else {
         //Knowledge on using &(this) in place of (event.target) gained from
@@ -117,6 +119,7 @@ const shipBattle=(num)=>{
 
 const didIWin = () => {
     if (winner === winCon) {
+        victory.play();
         alert("You Win!  The Borg are defeated!")
     }else if (player.hull === 0) {
         alert("You Lose!  The Borg will assimilate Earth!")

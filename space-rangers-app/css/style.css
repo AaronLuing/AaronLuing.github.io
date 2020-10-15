@@ -24,16 +24,14 @@ body {
     display: flex;
     justify-content: flex-end;
 }
+/* help with the CSS for column alignment from 
+https://coder-coder.com/display-divs-side-by-side/ */
 .row {
     width: 40%;
     float: left;
     padding: 50px;
 }
-/* #row2 {
-    width: 44%;
-    justify-content: right;
-    padding-left: 200px;
-} */
+
 /* stylings for submission form and buttons modified and styled after
 https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end_development/w03d02/student_labs/todo_app */
 #register {
