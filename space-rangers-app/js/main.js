@@ -64,6 +64,7 @@ $(() => {
             shipBattle(9)})
         })
         $('.fleebattle').on('click', runAway)
+        $('#repair').on('click', repairHull)
 })
 const fire = new Audio('audio/laser-blast-short.wav')
 const hit = new Audio('audio/impact-boom-short.wav')
@@ -187,14 +188,15 @@ const runAway=()=>{
         }
 }
 
-// const boostShield = () => {
-//     if (player.hull <= 10) {
-//         player.hull += 5
-//         alert("Diverting power to the main coupling!")
-//         alert("Your hull strength is now " + player.hull + "!")
-//     }
-//     else if (player.hull >= 15) {
-//         alert("We're givin' 'er all she's got, Capt'n!!")
-//         alert("You can only boost shield if your hull is less than 10")
-//     }
-// }
+const repairHull = () => {
+    if (player.hull <= 10) {
+        player.hull += 5
+        alert("Diverting power to the main coupling!")
+        $('#hull').text('Hull : ' + player.hull);
+        alert("Your hull strength is now " + player.hull + "!")
+    }
+    else if (player.hull >= 15) {
+        alert("We're givin' 'er all she's got, Capt'n!!")
+        alert("You can only boost shield if your hull is less than 10")
+    }
+}
