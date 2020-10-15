@@ -70,11 +70,9 @@ const destroyed = new Audio('audio/explosion-2.wav')
 const victory = new Audio('audio/woohoo.mp3')
 const buttonUse = new Audio('audio/buttons.wav')
 
-// let $info = $('#info')
-const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
-
+//code for delay setup recieved from 
+//https://stackoverflow.com/questions/14226803/wait-5-seconds-before-executing-next-line/14226807#14226807
+// const delay = ms => new Promise(res => setTimeout(res, ms));
 
 class Ship {
     constructor(name, hull, firepower, accuracy) {
@@ -94,17 +92,17 @@ class Ship {
             $('#hull').text('Hull : ' + player.hull);
         } else {
             $('.info').text('Missed!  Shot didn\'t connect!')
-            // alert('Missed!  Shot didn\'t connect!')
+            alert('Missed!  Shot didn\'t connect!')
             console.log('Missed!  Shot didn\'t connect!')
             return
         }
         if (enemy.hull > 0) {
             $('.info').text('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull)
-            // alert('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull)    
+            alert('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull)    
             console.log('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull);
             } else {
                 $('.info').text('Direct hit!  ' +enemy.name+ ' is destroyed!')
-                // alert('Direct hit!  ' +enemy.name+ ' is destroyed!')
+                alert('Direct hit!  ' +enemy.name+ ' is destroyed!')
                 console.log('Direct hit!  ' +enemy.name+ ' is destroyed!');
             }
     }
@@ -151,7 +149,7 @@ const EventHandlers = {
 
 const shipBattle=(num)=>{
     player.battle(aliens.aliens[num])
-    if (aliens.aliens[num].hull < 0) {
+    if (aliens.aliens[num].hull <= 0) {
         destroyed.play();
         winner++;
         (event.target).remove()
