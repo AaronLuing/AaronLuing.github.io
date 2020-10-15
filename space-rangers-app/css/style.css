@@ -6,21 +6,34 @@ h1 {
     font-size: 50px;
 }
 body {
+    /* background-image: url('/images/starfield2.jpg'); */
+    background-image: url(https://www.wallpaperup.com/uploads/wallpapers/2014/04/12/330551/185c99304364bba58fe8bfe3765fcf64.jpg);
     margin: 0 auto;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    color: ghostwhite;
+}
+/* body, body>div {
+    background-image: url('/images/starfield2.jpg');
+} */
+/* .game-canvas{
+    display: inline-block;
+
+} */
+#row1 {
+    display: flex;
+    justify-content: flex-end;
 }
 .row {
-    display: inline-flex;
+    width: 40%;
+    float: left;
+    padding: 50px;
 }
-#row1 {
-    justify-content: left;
-    padding-right: 200px;
-}
-#row2 {
+/* #row2 {
+    width: 44%;
     justify-content: right;
     padding-left: 200px;
-}
+} */
 /* stylings for submission form and buttons modified and styled after
 https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end_development/w03d02/student_labs/todo_app */
 #register {
@@ -48,6 +61,7 @@ https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end
 https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow */
 .enemyFleet>div {
     display: flex;
+    justify-content: right;
     flex-direction: column;
     margin: 3px;
     border: solid 3px black;

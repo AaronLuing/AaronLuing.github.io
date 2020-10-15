@@ -162,24 +162,24 @@ const didIWin = () => {
 //         this.firepower = firepower
 //         this.accuracy = accuracy
 //     }
-//     battle(enemy) {
-//         alert(this.name + ' attacks ' + enemy.name)
-//         console.log(this.name + ' attacks ' + enemy.name)
-//         if (this.accuracy > Math.random()) {
-//             enemy.hull -= this.firepower
-//             $('#hull').text('Hull : ' + player.hull);
-//         } else {
-//             alert('Missed!  Shot didn\'t connect!')
-//             console.log('Missed!  Shot didn\'t connect!')
-//             return
-//         }
-//         if (enemy.hull > 0) {
-//             alert('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull)    
-//             console.log('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull);
-//             } else {
-//                 alert('Direct hit!  ' +enemy.name+ ' is destroyed!')
-//                 console.log('Direct hit!  ' +enemy.name+ ' is destroyed!');
-//             }
+    battle(enemy) {
+        alert(this.name + ' attacks ' + enemy.name)
+        console.log(this.name + ' attacks ' + enemy.name)
+        if (this.accuracy > Math.random()) {
+            enemy.hull -= this.firepower
+            $('#hull').text('Hull : ' + player.hull);
+        } else {
+            alert('Missed!  Shot didn\'t connect!')
+            console.log('Missed!  Shot didn\'t connect!')
+            return
+        }
+        if (enemy.hull > 0) {
+            alert('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull)    
+            console.log('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull);
+            } else {
+                alert('Direct hit!  ' +enemy.name+ ' is destroyed!')
+                console.log('Direct hit!  ' +enemy.name+ ' is destroyed!');
+            }
 //     }
 // }
 // class AlienFactory {    
@@ -214,16 +214,16 @@ const didIWin = () => {
 //         $difficulty.css({'display':'none'})
 //         $('.shipname').css({'display':'inline-block'})
 //     },
-//     shipBattle: (num) => {
-//         player.battle(alien.aliens[num])
-//         if (alien.aliens[num].hull < 0) {
-//             alien.aliens.splice(num, 1)
-//         } else {
-//         alien.aliens[num].battle(player)
-//         }
-//         didIWin()
-//     }
-// }
+    shipBattle: (num) => {
+        player.battle(alien.aliens[num])
+        if (alien.aliens[num].hull < 0) {
+            alien.aliens.splice(num, 1)
+        } else {
+        alien.aliens[num].battle(player)
+        }
+        didIWin()
+    }
+}
 
 // const shipBattle=(num)=>{
 //     player.battle(alien.aliens[num])

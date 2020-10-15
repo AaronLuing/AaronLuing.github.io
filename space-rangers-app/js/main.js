@@ -11,7 +11,7 @@ $(() => {
         $('#firepower').text('Firepower : ' + player.firepower);
         $('#accuracy').text('Accuracy : ' + player.accuracy);
         $('.shipname').css({'display':'none'});
-        $('.game-canvas').css({'display':'inline-block'})
+        $('.game-canvas').css({'display':''})
         $('#ship1').on('click', e => {
             shipBattle(0)})
         $('#ship2').on('click', e => {
@@ -125,17 +125,6 @@ const didIWin = () => {
         return
     }
 }
-
-// const didIWin = () => {
-//     if (Array.isArray(aliens.aliens) && aliens.aliens.length === 0) {
-//         alert("You Win!  The Borg are defeated!")
-//     }else if (player.hull === 0) {
-//         alert("You Lose!  The Borg will assimilate Earth!")
-//     } 
-//     else {
-//         return
-//     }
-// }
 
 // const runAway=()=>{
 //     let coward = prompt("Are you sure?","yes or no")
