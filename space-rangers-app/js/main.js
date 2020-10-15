@@ -97,12 +97,13 @@ const EventHandlers = {
 }
 
 const shipBattle=(num)=>{
-    console.log(num)
     player.battle(aliens.aliens[num])
     if (aliens.aliens[num].hull < 0) {
-        aliens.aliens.splice(num, 1)
+        aliens.aliens.splice(num, 1);
+        (event.target).remove()
     } else {
-    aliens.aliens[num].battle(player)
+        $(this).text('Hull: ' + aliens.aliens[num].hull)
+        aliens.aliens[num].battle(player)
     }
     didIWin()
 }
@@ -118,16 +119,6 @@ const didIWin = () => {
         return
     }
 }
-// function shipBattle() {
-//     let $target = $(event.target)
-//     player.battle($target)
-//     if ($target.hull < 0) {
-//             $target.splice()
-//             } else {
-//             $target.battle(player)
-//             }
-//             didIWin()
-// }
 
 // const runAway=()=>{
 //     let coward = prompt("Are you sure?","yes or no")
