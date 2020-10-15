@@ -1,7 +1,35 @@
 // Sound effects provided by freesound.org
+// Modal assembly provided by
+//  https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end_development/w03d02/morning_exercise
 $(() => {
+    $('#openModal1').css({'display':'none'})
+    $('.title').css({'display':'none'})
+    $('.difficulty').css({'display':'none'})
     $('.game-canvas').css({'display':'none'})
     $('.shipname').css({'display':'none'})
+    $('#modal1').css({'display':'none'})
+
+    const $intro = $('#intro');
+    const $closeIntro = $('#closeintro');
+    const $openBtn = $('#openModal1');
+    const $modal1 = $('#modal1');
+    const $closeBtn = $('#close');
+
+    const exitIntro = () => {
+        $intro.css({'display':'none'});
+        $('.title').css({'display':''});
+        $('.difficulty').css({'display':''})
+        $('#openModal1').css({'display':''})
+    }
+    const openAbout = () => {
+        $modal1.css({'display':'block'})
+    }
+    const closeAbout = () => {
+        $modal1.css({'display':'none'})
+    }
+    $closeIntro.on('click', exitIntro)
+    $openBtn.on('click', openAbout)
+    $closeBtn.on('click', closeAbout)
     
     $('form').on('submit', (event) => {
         event.preventDefault();
@@ -35,6 +63,10 @@ $(() => {
             shipBattle(9)})
         })
 })
+const fire = new Audio('audio/laser-blast-short.wav')
+const hit = new Audio('audio/impact-boom-short.wav')
+const destroyed = new Audio('audio/explosion-2.wav')
+const victory = new Audio('audio/woohoo.mp3')
 
 class Ship {
     constructor(name, hull, firepower, accuracy) {
@@ -44,10 +76,12 @@ class Ship {
         this.accuracy = accuracy
     }
     battle(enemy) {
+        fire.play();
         alert(this.name + ' attacks ' + enemy.name)
         console.log(this.name + ' attacks ' + enemy.name)
         if (this.accuracy > Math.random()) {
-            enemy.hull -= this.firepower
+            hit.play();
+            enemy.hull -= this.firepower;
             $('#hull').text('Hull : ' + player.hull);
         } else {
             alert('Missed!  Shot didn\'t connect!')
@@ -90,8 +124,7 @@ const player = new Ship("playerName", 20, 5, .7)
 const aliens = new AlienFactory("Space Pirate")
 let winner = 0
 let winCon
-const blast = new Audio('audio/explosion-2.wav')
-const victory = new Audio('audio/woohoo.mp3')
+
 
 const EventHandlers = {
     makeEnemies: (ammount) => {
@@ -106,13 +139,13 @@ const EventHandlers = {
 const shipBattle=(num)=>{
     player.battle(aliens.aliens[num])
     if (aliens.aliens[num].hull < 0) {
-        blast.play();
+        destroyed.play();
         winner++;
         (event.target).remove()
     } else {
         //Knowledge on using &(this) in place of (event.target) gained from
         //https://stackoverflow.com/questions/21415436/setting-the-value-text-of-event-target-with-jquery
-        $(this).text('Hull: ' + aliens.aliens[num].hull)
+        $(event.target).text('Hull: ' + aliens.aliens[num].hull)
         aliens.aliens[num].battle(player)
     }
     didIWin()
