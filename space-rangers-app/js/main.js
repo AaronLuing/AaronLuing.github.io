@@ -63,6 +63,7 @@ $(() => {
         $('#ship10').on('click', e => {
             shipBattle(9)})
         })
+        $('.fleebattle').on('click', runAway)
 })
 const fire = new Audio('audio/laser-blast-short.wav')
 const hit = new Audio('audio/impact-boom-short.wav')
@@ -175,16 +176,16 @@ const didIWin = () => {
     }
 }
 
-// const runAway=()=>{
-//     let coward = prompt("Are you sure?","yes or no")
-//         if (coward === "yes") {
-//             alert("You fled the battle and doomed Earth to assimilation!")
-//             location.reload()
-//         }
-//         else {
-//             alert("You decided to stand your ground like a true Starfleet Officer!")
-//         }
-// }
+const runAway=()=>{
+    let coward = prompt("Are you sure?","yes or no")
+        if (coward === "yes") {
+            alert("You abandoned your post!  You'll be stripped of your command for this!")
+            location.reload()
+        }
+        else {
+            alert("You decided to stand your ground like a true Space Ranger!")
+        }
+}
 
 // const boostShield = () => {
 //     if (player.hull <= 10) {
