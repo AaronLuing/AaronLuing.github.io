@@ -70,6 +70,12 @@ const destroyed = new Audio('audio/explosion-2.wav')
 const victory = new Audio('audio/woohoo.mp3')
 const buttonUse = new Audio('audio/buttons.wav')
 
+// let $info = $('#info')
+const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
+
 class Ship {
     constructor(name, hull, firepower, accuracy) {
         this.name = name
@@ -79,22 +85,26 @@ class Ship {
     }
     battle(enemy) {
         fire.play();
+        $('.info').text(this.name + ' attacks ' + enemy.name);
         alert(this.name + ' attacks ' + enemy.name)
-        console.log(this.name + ' attacks ' + enemy.name)
+        console.log(this.name + ' attacks ' + enemy.name);
         if (this.accuracy > Math.random()) {
             hit.play();
             enemy.hull -= this.firepower;
             $('#hull').text('Hull : ' + player.hull);
         } else {
-            alert('Missed!  Shot didn\'t connect!')
+            $('.info').text('Missed!  Shot didn\'t connect!')
+            // alert('Missed!  Shot didn\'t connect!')
             console.log('Missed!  Shot didn\'t connect!')
             return
         }
         if (enemy.hull > 0) {
-            alert('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull)    
+            $('.info').text('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull)
+            // alert('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull)    
             console.log('Direct hit!  ' +enemy.name+ '\'s hull integrity is at ' + enemy.hull);
             } else {
-                alert('Direct hit!  ' +enemy.name+ ' is destroyed!')
+                $('.info').text('Direct hit!  ' +enemy.name+ ' is destroyed!')
+                // alert('Direct hit!  ' +enemy.name+ ' is destroyed!')
                 console.log('Direct hit!  ' +enemy.name+ ' is destroyed!');
             }
     }
@@ -157,8 +167,10 @@ const didIWin = () => {
     if (winner === winCon) {
         victory.play();
         alert("You Win!  The pirates are defeated!")
-    }else if (player.hull === 0) {
+        $('.info').text("You Win!  The pirates are defeated!")
+    }else if (player.hull <= 0) {
         alert("You Lost!  The pirates will loot and pillage across the system!")
+        $('.info').text("You Lost!  The pirates will loot and pillage across the system!")
     } 
     else {
         return
