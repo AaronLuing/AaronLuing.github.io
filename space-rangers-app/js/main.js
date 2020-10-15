@@ -35,6 +35,7 @@ $(() => {
         event.preventDefault();
         const playerName = $('.namebox').val();
         player.name = playerName;
+        buttonUse.play();
         $('#player-ship').text(player.name);
         $('#hull').text('Hull : ' + player.hull);
         $('#firepower').text('Firepower : ' + player.firepower);
@@ -67,6 +68,7 @@ const fire = new Audio('audio/laser-blast-short.wav')
 const hit = new Audio('audio/impact-boom-short.wav')
 const destroyed = new Audio('audio/explosion-2.wav')
 const victory = new Audio('audio/woohoo.mp3')
+const buttonUse = new Audio('audio/buttons.wav')
 
 class Ship {
     constructor(name, hull, firepower, accuracy) {
@@ -131,6 +133,7 @@ const EventHandlers = {
         let $difficulty = $('.difficulty')
         winCon = ammount;
         aliens.generateAliens(ammount);
+        buttonUse.play();
         $difficulty.css({'display':'none'})
         $('.shipname').css({'display':'inline-block'})
     }
@@ -143,8 +146,6 @@ const shipBattle=(num)=>{
         winner++;
         (event.target).remove()
     } else {
-        //Knowledge on using &(this) in place of (event.target) gained from
-        //https://stackoverflow.com/questions/21415436/setting-the-value-text-of-event-target-with-jquery
         $(event.target).text('Hull: ' + aliens.aliens[num].hull)
         aliens.aliens[num].battle(player)
     }
