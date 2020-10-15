@@ -6,20 +6,26 @@ h1 {
     font-size: 50px;
 }
 body {
-    /* background-image: url('/images/starfield2.jpg'); */
     background-image: url(https://www.wallpaperup.com/uploads/wallpapers/2014/04/12/330551/185c99304364bba58fe8bfe3765fcf64.jpg);
     margin: 0 auto;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     color: ghostwhite;
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
 }
-/* body, body>div {
-    background-image: url('/images/starfield2.jpg');
-} */
-/* .game-canvas{
-    display: inline-block;
-
-} */
+/* code for fade in animations provided by 
+https://blog.hubspot.com/website/css-fade-in */
+.game-canvas{
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
+}
 #row1 {
     display: flex;
     justify-content: flex-end;
@@ -61,8 +67,6 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow */
     display: flex;
     justify-content: right;
     flex-direction: column;
-    margin: 3px;
-    border: solid 3px black;
     font-size: 15px;
     width: 100px;
     height: 100px;
@@ -70,6 +74,8 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow */
     padding: 0px;
     line-height: 100px;
     background-color: orange;
+    margin: 3px;
+    border: solid 3px black;
 }
 .enemyFleet {
     display: flex;
@@ -111,3 +117,29 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow */
     line-height: 100px;
     background-color: orange;
 } */
+
+/* Animation Parameters */
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }

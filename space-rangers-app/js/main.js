@@ -1,3 +1,4 @@
+// Sound effects provided by freesound.org
 $(() => {
     $('.game-canvas').css({'display':'none'})
     $('.shipname').css({'display':'none'})
@@ -84,6 +85,7 @@ const randomFloat = (min, max) => {
     let num = Math.random() * (max - min) + min;    
     return num.toFixed(1);}
 
+
 const player = new Ship("playerName", 20, 5, .7)
 const aliens = new AlienFactory("Space Pirate")
 let winner = 0
@@ -120,9 +122,9 @@ const shipBattle=(num)=>{
 const didIWin = () => {
     if (winner === winCon) {
         victory.play();
-        alert("You Win!  The Borg are defeated!")
+        alert("You Win!  The pirates are defeated!")
     }else if (player.hull === 0) {
-        alert("You Lose!  The Borg will assimilate Earth!")
+        alert("You Lost!  The pirates will loot and pillage across the system!")
     } 
     else {
         return
