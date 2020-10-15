@@ -86,10 +86,13 @@ const randomFloat = (min, max) => {
 
 const player = new Ship("playerName", 20, 5, .7)
 const aliens = new AlienFactory("Space Pirate")
+let winner = 0
+let winCon
 
 const EventHandlers = {
     makeEnemies: (ammount) => {
         let $difficulty = $('.difficulty')
+        winCon = ammount;
         aliens.generateAliens(ammount);
         $difficulty.css({'display':'none'})
         $('.shipname').css({'display':'inline-block'})
@@ -99,9 +102,12 @@ const EventHandlers = {
 const shipBattle=(num)=>{
     player.battle(aliens.aliens[num])
     if (aliens.aliens[num].hull < 0) {
-        aliens.aliens.splice(num, 1);
+        winner++;
+        // aliens.aliens.splice(num, 1);
         (event.target).remove()
     } else {
+        //Knowledge on using &(this) in place of (event.target) gained from
+        //https://stackoverflow.com/questions/21415436/setting-the-value-text-of-event-target-with-jquery
         $(this).text('Hull: ' + aliens.aliens[num].hull)
         aliens.aliens[num].battle(player)
     }
@@ -110,7 +116,7 @@ const shipBattle=(num)=>{
 
 
 const didIWin = () => {
-    if (Array.isArray(aliens.aliens) && aliens.aliens.length === 0) {
+    if (winner === winCon) {
         alert("You Win!  The Borg are defeated!")
     }else if (player.hull === 0) {
         alert("You Lose!  The Borg will assimilate Earth!")
@@ -119,6 +125,17 @@ const didIWin = () => {
         return
     }
 }
+
+// const didIWin = () => {
+//     if (Array.isArray(aliens.aliens) && aliens.aliens.length === 0) {
+//         alert("You Win!  The Borg are defeated!")
+//     }else if (player.hull === 0) {
+//         alert("You Lose!  The Borg will assimilate Earth!")
+//     } 
+//     else {
+//         return
+//     }
+// }
 
 // const runAway=()=>{
 //     let coward = prompt("Are you sure?","yes or no")
