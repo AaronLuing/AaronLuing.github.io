@@ -2,6 +2,7 @@
 // Modal assembly provided by
 //  https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end_development/w03d02/morning_exercise
 $(() => {
+    // Sets all proceeding sections to display:none so that I can stagger their appearance
     $('.openModal1').css({'display':'none'})
     $('.title').css({'display':'none'})
     $('.difficulty').css({'display':'none'})
@@ -9,7 +10,7 @@ $(() => {
     $('.shipname').css({'display':'none'})
     $('#modal1').css({'display':'none'})
     $('#endModal').css({'display':'none'})
-
+    // Assign modal interactions to variables
     const $intro = $('#intro');
     const $closeIntro = $('#closeintro');
     const $openBtn = $('.openModal1');
@@ -18,14 +19,14 @@ $(() => {
     const $end = $('#endModal');
     const $refresh = $('#refresh');
     const $closeEnd = $('#closeEnd');
-
+    // These are the two functions for the End Screen Modal, where you can refresh the page or return to the game screen
     const reLoad = () => {
         location.reload()
     }
     const baskInGlory = () => {
         $end.css({'display':'none'})
     }
-
+    // This code will close the intro modal, and proceed to unhide the main title and the difficulty selector buttons
     const exitIntro = () => {
         $intro.css({'display':'none'});
         $('.title').css({'display':''});
@@ -33,18 +34,23 @@ $(() => {
         $('.openModal1').css({'display':''})
         playMusic()
     }
+    // These two functions will open and close the How To Play modal
     const openAbout = () => {
         $modal1.css({'display':'block'})
     }
     const closeAbout = () => {
         $modal1.css({'display':'none'})
     }
+    // Assigning the previous variabls on-click functions.  Mostly to open and close the modals, but also assigning 
+    // the End Screen Modals the functions declared above.
     $closeIntro.on('click', exitIntro)
     $openBtn.on('click', openAbout)
     $closeBtn.on('click', closeAbout)
     $refresh.on('click', reLoad)
     $closeEnd.on('click', baskInGlory)
-    
+    // This code is dictating what happens after the Player Ship Name form is submitted.  First it prevents page refresh,
+    // and then assigns the value from the form box as the name of the Player Ship.  All stats from the Player Ship are
+    // subsequently rendered into their appropriate divs
     $('form').on('submit', (event) => {
         event.preventDefault();
         const playerName = $('.namebox').val();
@@ -56,6 +62,8 @@ $(() => {
         $('#accuracy').text('Accuracy : ' + player.accuracy);
         $('.shipname').css({'display':'none'});
         $('.game-canvas').css({'display':''})
+        // .on 'Click' functions with the appropriate variables are assigned to each possible
+        // enemy ship div the player could make.
         $('#ship1').on('click', e => {
             shipBattle(0)})
         $('#ship2').on('click', e => {
@@ -77,10 +85,12 @@ $(() => {
         $('#ship10').on('click', e => {
             shipBattle(9)})
         })
+    // Functions are assigned to the Flee, Repair Hull, and Mute Music buttons
     $('.fleebattle').on('click', runAway)
     $('.repair').on('click', repairHull)
     $('.mute').on('click', pauseMusic)
 })
+//  All of my audio files are declared here
 const fire = new Audio('audio/laser-blast-short.wav')
 const hit = new Audio('audio/impact-boom-short.wav')
 const destroyed = new Audio('audio/explosion-2.wav')
@@ -88,14 +98,16 @@ const victory = new Audio('audio/woohoo.mp3')
 const buttonUse = new Audio('audio/buttons.wav')
 const loseScream = new Audio('audio/lose-scream.wav')
 const fightMusic = new Audio('audio/Ready_to_Fight_-_David_Fesliyan.mp3')
+// Set the audio volume for the fightMusic
 // changing audio volume taken from https://www.w3schools.com/tags/av_prop_volume.asp
 fightMusic.volume = 0.1
+// Made two functions, one to play the fightMusic so I can declare it on startup, and one to pause the music
+// which I can assign to a button to allow the player to stop playback
 // assigning play and pause functions taken from https://www.w3schools.com/jsref/met_audio_pause.asp
 function playMusic() {
     fightMusic.play();
 }
-
-    function pauseMusic() {
+function pauseMusic() {
     fightMusic.pause();
 } 
 
@@ -200,12 +212,10 @@ const didIWin = () => {
     if (winner === winCon) {
         victory.play();
         winScreen();
-        // alert("You Win!  The pirates are defeated!")
         $('.info').text("You Win!  The pirates are defeated!")
     }else if (player.hull <= 0) {
         loseScream.play();
         loseScreen();
-        // alert("You Lost!  The pirates will loot and pillage across the system!")
         $('.info').text("You Lost!  The pirates will loot and pillage across the system!")
     } 
     else {
