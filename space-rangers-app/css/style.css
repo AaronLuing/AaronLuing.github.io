@@ -56,6 +56,16 @@ https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end
 	background-color: navy;
 	color: white;
 }
+.modalbutton {
+	padding: 14px 18px;
+	background-color: #677996;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+	color: white;
+	font-family: 'Arial';
+	cursor: pointer;
+}
 .namebox {
     height: 23px; 
     width: 200px;
@@ -86,7 +96,7 @@ provided by https://stackoverflow.com/questions/20047364/how-to-give-the-backgro
     /* z-index: 10; */
     color: white;
     line-height: 100px;
-    
+    cursor: pointer;
 }
 .enemyFleet {
     display: flex;
@@ -107,10 +117,19 @@ provided by https://stackoverflow.com/questions/20047364/how-to-give-the-backgro
 	overflow: auto;
 	/*If overflow is clipped, a scroll-bar should be added to see the rest of the content*/
 }
-#modal1text, #endModalText {
+#endModalText {
     background-color: white;
     color: black;
 	height: 350px;
+	width: 550px;
+    border-radius: 2px;
+    margin: 150px auto;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+#modal1text {
+    background-color: white;
+    color: black;
+	height: 750px;
 	width: 550px;
     border-radius: 2px;
     margin: 150px auto;

@@ -76,8 +76,8 @@ $(() => {
         $('#ship10').on('click', e => {
             shipBattle(9)})
         })
-        $('.fleebattle').on('click', runAway)
-        $('.repair').on('click', repairHull)
+    $('.fleebattle').on('click', runAway)
+    $('.repair').on('click', repairHull)
 })
 const fire = new Audio('audio/laser-blast-short.wav')
 const hit = new Audio('audio/impact-boom-short.wav')
