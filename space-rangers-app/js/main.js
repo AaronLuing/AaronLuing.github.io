@@ -8,12 +8,23 @@ $(() => {
     $('.game-canvas').css({'display':'none'})
     $('.shipname').css({'display':'none'})
     $('#modal1').css({'display':'none'})
+    $('#endModal').css({'display':'none'})
 
     const $intro = $('#intro');
     const $closeIntro = $('#closeintro');
     const $openBtn = $('.openModal1');
     const $modal1 = $('#modal1');
     const $closeBtn = $('#close');
+    const $end = $('#endModal');
+    const $refresh = $('#refresh');
+    const $closeEnd = $('#closeEnd');
+
+    const reLoad = () => {
+        location.reload()
+    }
+    const baskInGlory = () => {
+        $end.css({'display':'none'})
+    }
 
     const exitIntro = () => {
         $intro.css({'display':'none'});
@@ -30,6 +41,8 @@ $(() => {
     $closeIntro.on('click', exitIntro)
     $openBtn.on('click', openAbout)
     $closeBtn.on('click', closeAbout)
+    $refresh.on('click', reLoad)
+    $closeEnd.on('click', baskInGlory)
     
     $('form').on('submit', (event) => {
         event.preventDefault();
@@ -71,6 +84,7 @@ const hit = new Audio('audio/impact-boom-short.wav')
 const destroyed = new Audio('audio/explosion-2.wav')
 const victory = new Audio('audio/woohoo.mp3')
 const buttonUse = new Audio('audio/buttons.wav')
+
 
 //code for delay setup recieved from 
 //https://stackoverflow.com/questions/14226803/wait-5-seconds-before-executing-next-line/14226807#14226807
@@ -162,14 +176,26 @@ const shipBattle=(num)=>{
     didIWin()
 }
 
+const winScreen = () => {
+    $('#endHeader').text('You Won!');
+    $('#endMessage').text('You defeated all the pirates!  You are a true Space Ranger!')
+    $('#endModal').css({'display':'block'})
+}
+const loseScreen = () => {
+    $('#endHeader').text('You Lost!');
+    $('#endMessage').text('The pirates will loot and pillage across the system!')
+    $('#endModal').css({'display':'block'})
+}
 
 const didIWin = () => {
     if (winner === winCon) {
         victory.play();
-        alert("You Win!  The pirates are defeated!")
+        winScreen();
+        // alert("You Win!  The pirates are defeated!")
         $('.info').text("You Win!  The pirates are defeated!")
     }else if (player.hull <= 0) {
-        alert("You Lost!  The pirates will loot and pillage across the system!")
+        loseScreen();
+        // alert("You Lost!  The pirates will loot and pillage across the system!")
         $('.info').text("You Lost!  The pirates will loot and pillage across the system!")
     } 
     else {

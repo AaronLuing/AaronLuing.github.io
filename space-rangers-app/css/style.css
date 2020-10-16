@@ -27,6 +27,13 @@ https://blog.hubspot.com/website/css-fade-in */
     -o-animation: fadeIn ease 5s;
     -ms-animation: fadeIn ease 5s;
 }
+#endModal {
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
+}
 #row1 {
     display: flex;
     justify-content: flex-end;
@@ -88,7 +95,7 @@ provided by https://stackoverflow.com/questions/20047364/how-to-give-the-backgro
     width: 300px;
     height: 400px;
 }
-#modal1 {
+#modal1, #endModal{
 	background-color: rgba(0,0,0,0.4);
 	position: fixed;
 	top: 0;
@@ -100,7 +107,7 @@ provided by https://stackoverflow.com/questions/20047364/how-to-give-the-backgro
 	overflow: auto;
 	/*If overflow is clipped, a scroll-bar should be added to see the rest of the content*/
 }
-#modal1text {
+#modal1text, #endModalText {
     background-color: white;
     color: black;
 	height: 350px;
