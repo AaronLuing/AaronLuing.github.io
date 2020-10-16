@@ -2,7 +2,7 @@
 // Modal assembly provided by
 //  https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end_development/w03d02/morning_exercise
 $(() => {
-    $('#openModal1').css({'display':'none'})
+    $('.openModal1').css({'display':'none'})
     $('.title').css({'display':'none'})
     $('.difficulty').css({'display':'none'})
     $('.game-canvas').css({'display':'none'})
@@ -11,7 +11,7 @@ $(() => {
 
     const $intro = $('#intro');
     const $closeIntro = $('#closeintro');
-    const $openBtn = $('#openModal1');
+    const $openBtn = $('.openModal1');
     const $modal1 = $('#modal1');
     const $closeBtn = $('#close');
 
@@ -19,7 +19,7 @@ $(() => {
         $intro.css({'display':'none'});
         $('.title').css({'display':''});
         $('.difficulty').css({'display':''})
-        $('#openModal1').css({'display':''})
+        $('.openModal1').css({'display':''})
     }
     const openAbout = () => {
         $modal1.css({'display':'block'})
@@ -64,7 +64,7 @@ $(() => {
             shipBattle(9)})
         })
         $('.fleebattle').on('click', runAway)
-        $('#repair').on('click', repairHull)
+        $('.repair').on('click', repairHull)
 })
 const fire = new Audio('audio/laser-blast-short.wav')
 const hit = new Audio('audio/impact-boom-short.wav')

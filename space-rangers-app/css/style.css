@@ -53,7 +53,7 @@ https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end
     height: 23px; 
     width: 200px;
 }
-#but1 {
+#but1, #button {
     height: 40px; 
     width: 250px;
     font-size: 15px;
