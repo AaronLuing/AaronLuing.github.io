@@ -110,7 +110,9 @@ function playMusic() {
 function pauseMusic() {
     fightMusic.pause();
 } 
-
+// My Ship class, of which all ships will be based.  Every ship will have a name, hull, firepower, and accuracy.
+//  Each ship will also have access to the battle(enemy) function.  The attacker will always be this.---, while the
+// enemy will always be declared as the enemy parameter.
 class Ship {
     constructor(name, hull, firepower, accuracy) {
         this.name = name
@@ -144,6 +146,9 @@ class Ship {
             }
     }
 }
+// Enemy factory that will make the enemy ships.  Has an array to contain all enemies that we generate.
+// When generateAliens is given a numerical value, it will create that ammount of ships based off of our Ship
+// class, and assign random numbers for each ships stats.
 class AlienFactory {    
     constructor(alienname) {        
     this.name = alienname        
@@ -158,21 +163,27 @@ class AlienFactory {
     return this.name
     }
 }
-
+// These two functions control the random number generation needed for the enemies to have random stats, and then
+// round those stats to the closest whole number
 const randomNumber = (min, max) => {    
     return Math.floor(Math.random() * (max - min + 1)) + min;}
-
 const randomFloat = (min, max) => {    
     let num = Math.random() * (max - min) + min;    
     return num.toFixed(1);}
-
-
+// Here we declare the player as a new ship with specific stats to be assigned to all the variables
 const player = new Ship("playerName", 20, 5, .7)
+// Here, we dictate the base name for all out future generated enemies
 const aliens = new AlienFactory("Space Pirate")
+// These variables work in conjunction with our winCondition function to determin when the player has won.
+// The winner variable is initially set to zero, and will increment by 1 for every enemy defeated
 let winner = 0
+// The winCon is declared but left empty.  in the winCondition function, winCon will be assigned a value after
+// the player has constructed ships.  Then, it is used as the limit that the winner variable must reach before
+// triggering winCondition
 let winCon
-
-
+// One variable to hold all our Event Handlers.  Unfortunately, I only had time to restructure one function into the
+// handler: the makeEnemies.  This function will run the generateAliens for a specific ammount of loops, and then
+// swap the display for the difficulty div and the game area div
 const EventHandlers = {
     makeEnemies: (ammount) => {
         let $difficulty = $('.difficulty')
@@ -183,7 +194,9 @@ const EventHandlers = {
         $('.shipname').css({'display':'inline-block'})
     }
 }
-
+// Parent function that calls upon the battle(enemy) in our Ship class.  The position in the array will be dictated via
+// numerical variable passed from the ship divs listed above in the JQuery onLoad.  It then dictates how battle functions.
+// After every loop, it will also check our winCondition
 const shipBattle=(num)=>{
     player.battle(aliens.aliens[num])
     if (aliens.aliens[num].hull <= 0) {
@@ -196,7 +209,8 @@ const shipBattle=(num)=>{
     }
     didIWin()
 }
-
+// These two functions will style and display a given modal based on whether the player has won the game, or
+// has lost the game, per parameters set in didIWin
 const winScreen = () => {
     $('#endHeader').text('You Won!');
     $('#endMessage').text('You defeated all the pirates!  You are a true Space Ranger!')
@@ -207,7 +221,8 @@ const loseScreen = () => {
     $('#endMessage').text('The pirates will loot and pillage across the system!')
     $('#endModal').css({'display':'block'})
 }
-
+// the winCondition function, aka didIWin.  Checks the winner variable against the winCon variable for a win.
+// if the players hull reaches zero, the lose function will be called instead.
 const didIWin = () => {
     if (winner === winCon) {
         victory.play();
@@ -222,7 +237,8 @@ const didIWin = () => {
         return
     }
 }
-
+// The function for our player to flee the battle.  Running the function will bring up a prompt that will ask the
+// player if they want to run away, with either Yes or No giving back different results.
 const runAway=()=>{
     let coward = prompt("Are you sure?","yes or no")
         if (coward === "yes") {
@@ -233,8 +249,11 @@ const runAway=()=>{
             alert("You decided to stand your ground like a true Space Ranger!")
         }
 }
-
+// assigns an engineers variable a value of 3.  
 let engineers = 3
+// the repairHull function, when ran, will repair the player ships hull by three, but only if the hull was at 10
+// or below when the function was called.  Every time the hull is repaired, 1 is subtracted from the engineers.
+// When the engineers value reaches zero, player cannot repair anymore.
 const repairHull = () => {
     if (player.hull <= 10 && engineers > 0) {
         player.hull += 3;
