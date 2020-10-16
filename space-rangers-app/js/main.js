@@ -31,6 +31,7 @@ $(() => {
         $('.title').css({'display':''});
         $('.difficulty').css({'display':''})
         $('.openModal1').css({'display':''})
+        playMusic()
     }
     const openAbout = () => {
         $modal1.css({'display':'block'})
@@ -78,12 +79,25 @@ $(() => {
         })
     $('.fleebattle').on('click', runAway)
     $('.repair').on('click', repairHull)
+    $('.mute').on('click', pauseMusic)
 })
 const fire = new Audio('audio/laser-blast-short.wav')
 const hit = new Audio('audio/impact-boom-short.wav')
 const destroyed = new Audio('audio/explosion-2.wav')
 const victory = new Audio('audio/woohoo.mp3')
 const buttonUse = new Audio('audio/buttons.wav')
+const loseScream = new Audio('audio/lose-scream.wav')
+const fightMusic = new Audio('audio/Ready_to_Fight_-_David_Fesliyan.mp3')
+// changing audio volume taken from https://www.w3schools.com/tags/av_prop_volume.asp
+fightMusic.volume = 0.1
+// assigning play and pause functions taken from https://www.w3schools.com/jsref/met_audio_pause.asp
+function playMusic() {
+    fightMusic.play();
+}
+
+    function pauseMusic() {
+    fightMusic.pause();
+} 
 
 class Ship {
     constructor(name, hull, firepower, accuracy) {
@@ -189,6 +203,7 @@ const didIWin = () => {
         // alert("You Win!  The pirates are defeated!")
         $('.info').text("You Win!  The pirates are defeated!")
     }else if (player.hull <= 0) {
+        loseScream.play();
         loseScreen();
         // alert("You Lost!  The pirates will loot and pillage across the system!")
         $('.info').text("You Lost!  The pirates will loot and pillage across the system!")
