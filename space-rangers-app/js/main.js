@@ -85,11 +85,6 @@ const destroyed = new Audio('audio/explosion-2.wav')
 const victory = new Audio('audio/woohoo.mp3')
 const buttonUse = new Audio('audio/buttons.wav')
 
-
-//code for delay setup recieved from 
-//https://stackoverflow.com/questions/14226803/wait-5-seconds-before-executing-next-line/14226807#14226807
-// const delay = ms => new Promise(res => setTimeout(res, ms));
-
 class Ship {
     constructor(name, hull, firepower, accuracy) {
         this.name = name
@@ -214,15 +209,20 @@ const runAway=()=>{
         }
 }
 
+let engineers = 3
 const repairHull = () => {
-    if (player.hull <= 10) {
-        player.hull += 5
+    if (player.hull <= 10 && engineers > 0) {
+        player.hull += 3;
+        engineers--;
         alert("Diverting power to the main coupling!")
         $('#hull').text('Hull : ' + player.hull);
         alert("Your hull strength is now " + player.hull + "!")
     }
-    else if (player.hull >= 15) {
-        alert("We're givin' 'er all she's got, Capt'n!!")
+    else if (player.hull >= 15 && engineers > 0) {
+        alert("We can't repair yet!")
         alert("You can only boost shield if your hull is less than 10")
+    }
+    else {
+        alert("You've run your crew ragged!  You'll have to push through on your own!")
     }
 }
