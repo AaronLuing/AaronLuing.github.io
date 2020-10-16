@@ -64,19 +64,22 @@ https://git.generalassemb.ly/seir-9-21/student-resources/tree/master/1_front_end
 }
 /* flexwrap used provided by 
 https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow */
+/* correct useage of filepathing (../) to retrieve the enemy ship image
+provided by https://stackoverflow.com/questions/20047364/how-to-give-the-background-image-path-in-css */
 .enemyFleet>div {
     display: flex;
     justify-content: right;
     flex-direction: column;
+    content: url('../images/enemyship.PNG');
     font-size: 15px;
-    width: 100px;
+    width: 200px;
     height: 100px;
     text-align: center;
     padding: 0px;
+    /* z-index: 10; */
+    color: white;
     line-height: 100px;
-    background-color: orange;
-    margin: 3px;
-    border: solid 3px black;
+    
 }
 .enemyFleet {
     display: flex;
